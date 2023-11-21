@@ -64,7 +64,7 @@ route.post("/signup", (req, res) => {
     const q = "INSERT INTO users (`username`, `password`, `email`) VALUES (?)";
     const values = [req.body.username, hash, req.body.email];
     db.query(q, [values], (err, data) => {
-      if (err) return res.json(err);
+      if (err) return res.send(false);
       res.send(data);
     });
   });
