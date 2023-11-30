@@ -13,6 +13,7 @@ const session = require("express-session");
 
 const app = express();
 
+
 // Using environment variables for the database connection
 const db = createConnection({
   host: process.env.DB_HOST,
