@@ -52,10 +52,10 @@ const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET;
 
 // Rate Limiter
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100
-});
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000,
+//   max: 100
+// });
 // app.use(limiter);
 
 function authenticateToken(req, res, next) {
@@ -76,6 +76,15 @@ app.use((err, req, res, next) => {
 });
 
 app.use("/api/auth", authRoutes); 
+
+app.get("/api/test", (req, res) => {
+  const q = "Select * FROM users";
+  console.log("log: show table");
+  db.query(q, (err, data) => {
+    if (err) return res.json(err);
+    return res.json(data);
+  });
+});
 
 app.get("/api/biotechnology", authenticateToken, (req, res) => {
   const q =
