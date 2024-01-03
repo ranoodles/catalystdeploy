@@ -78,14 +78,14 @@ app.use((err, req, res, next) => {
 
 app.use("/api/auth", authRoutes); 
 
-app.get("/api/test", (req, res) => {
-  const q = "Select * FROM users";
-  console.log("log: show table");
-  db.query(q, (err, data) => {
-    if (err) return res.json(err);
-    return res.json(data);
-  });
-});
+// app.get("/api/test", (req, res) => {
+//   const q = "Select * FROM users";
+//   console.log("log: show table");
+//   db.query(q, (err, data) => {
+//     if (err) return res.json(err);
+//     return res.json(data);
+//   });
+// });
 
 app.get("/api/biotechnology", authenticateToken, (req, res) => {
   const q =
